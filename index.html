@@ -170,24 +170,18 @@
       <section class="rsvp-card" id="rsvp" aria-label="Форма подтверждения присутствия" tabindex="-1" hidden>
         <button class="rsvp-close" type="button" aria-label="Свернуть форму">×</button>
         <h3>Подтверждение присутствия</h3>
-        <form id="rsvpForm">
-          <label>Имя и фамилия
-            <input name="name" type="text" required placeholder="Ваше имя" />
-          </label>
-          <label>Сможете ли вы прийти?
-            <select name="answer" required>
-              <option value="Буду/будем">Буду/будем</option>
-              <option value="Не смогу/не сможем">Не смогу/не сможем</option>
-              <option value="Уточню позже">Уточню позже</option>
-            </select>
-          </label>
-          <label>Комментарий
-            <textarea name="comment" rows="3" placeholder="Аллергии, пожелания, +1"></textarea>
-          </label>
-          <button class="button small" type="submit">Отправить</button>
-          <p class="form-hint">Способ отправки ответа будет подключён на следующем этапе.</p>
-          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
-        </form>
+        <div class="google-form-shell">
+          <iframe
+            class="google-form-frame"
+            src="https://docs.google.com/forms/d/e/1FAIpQLSfz__-zDvdcv3MVJ0xi5PJbgr52kYhMZWJV7tvegJoz6o-snA/viewform?embedded=true"
+            title="Форма подтверждения присутствия на свадьбе"
+            loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin">Загрузка формы…</iframe>
+        </div>
+        <p class="form-fallback">
+          Если форма не загрузилась,
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfz__-zDvdcv3MVJ0xi5PJbgr52kYhMZWJV7tvegJoz6o-snA/viewform" target="_blank" rel="noopener noreferrer">откройте её в новой вкладке</a>.
+        </p>
       </section>
 
       <p class="count-title">До нашего дня осталось</p>

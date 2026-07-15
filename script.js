@@ -1,9 +1,6 @@
 // Дата и время начала свадебного дня.
 const WEDDING_DATE = new Date('2026-08-07T16:00:00+03:00');
 
-// Замените на реальный email для подтверждений.
-const RSVP_EMAIL = 'your-email@example.com';
-
 const els = {
   days: document.getElementById('days'),
   hours: document.getElementById('hours'),
@@ -125,22 +122,3 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 window.addEventListener('resize', updateActiveNavigation);
 updateActiveNavigation();
-
-document.getElementById('rsvpForm').addEventListener('submit', (event) => {
-  event.preventDefault();
-  const formStatus = document.getElementById('formStatus');
-
-  if (RSVP_EMAIL === 'your-email@example.com') {
-    formStatus.textContent = 'Отправка ответа будет подключена на следующем этапе.';
-    return;
-  }
-
-  const data = new FormData(event.currentTarget);
-  const subject = encodeURIComponent('Подтверждение присутствия на свадьбе');
-  const body = encodeURIComponent(
-    `Имя: ${data.get('name')}\n` +
-    `Ответ: ${data.get('answer')}\n` +
-    `Комментарий: ${data.get('comment') || '—'}`
-  );
-  window.location.href = `mailto:${RSVP_EMAIL}?subject=${subject}&body=${body}`;
-});
