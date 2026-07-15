@@ -1,5 +1,5 @@
 :root {
-  --paper: #f5f0e6;
+  --paper: #f4eee5;
   --paper-dark: #eadfcd;
   --red: #b7151b;
   --red-deep: #9f1118;
@@ -60,6 +60,7 @@ body {
   background: rgba(248, 244, 235, .94);
   box-shadow: 0 10px 35px rgba(65, 48, 34, .25);
   backdrop-filter: blur(12px);
+  transform: translateX(-50%);
 }
 .quick-nav__item {
   appearance: none;
@@ -105,10 +106,11 @@ body::before {
 .page {
   width: min(100%, 430px);
   margin: 0 auto;
-  background:
-    radial-gradient(circle at top left, rgba(255,255,255,.72), transparent 42%),
-    radial-gradient(circle at 90% 46%, rgba(191,154,104,.13), transparent 23%),
-    linear-gradient(180deg, #f8f4eb, var(--paper));
+  background-color: var(--paper);
+  background-image:
+    radial-gradient(circle at 18% 12%, rgba(255,255,255,.28) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 76% 44%, rgba(126,94,59,.07) 0 1px, transparent 1.4px);
+  background-size: 47px 47px, 83px 83px;
   box-shadow: var(--shadow);
   overflow: hidden;
   position: relative;
@@ -136,9 +138,9 @@ body::before {
 
 .top-heart {
   display: block;
-  width: 210px;
+  width: 232px;
+  max-width: 84%;
   margin: 0 auto 12px;
-  mix-blend-mode: multiply;
   opacity: .98;
 }
 
@@ -281,7 +283,6 @@ body::before {
   max-width: 100%;
   height: auto;
   margin: 0 auto;
-  mix-blend-mode: multiply;
 }
 .church { width: 312px; margin-top: 6px; }
 .place { margin: 14px 0 22px; font-size: 24px; }
@@ -316,6 +317,7 @@ body::before {
 .quick-nav__item:active { transform: translateY(1px) scale(.98); }
 .button:focus-visible,
 .outline-button:focus-visible,
+.pinterest-link:focus-visible,
 .quick-nav__item:focus-visible,
 .rsvp-close:focus-visible,
 .skip-link:focus-visible {
@@ -442,6 +444,25 @@ body::before {
   font-size: 19px;
 }
 .inspiration-panel li + li { margin-top: 6px; }
+.pinterest-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 48px;
+  margin-top: 18px;
+  padding: 10px 14px;
+  border: 1px solid rgba(183, 21, 27, .34);
+  border-radius: 12px;
+  color: var(--red-deep);
+  background: rgba(255,255,255,.42);
+  font-size: 19px;
+  line-height: 1.15;
+  text-align: center;
+  text-decoration: none;
+  transition: transform .2s ease, border-color .2s ease, background .2s ease;
+}
 .note {
   max-width: 350px;
   margin: 26px auto 0;
@@ -455,7 +476,6 @@ body::before {
   width: 190px;
   height: auto;
   margin: 18px auto 44px;
-  mix-blend-mode: multiply;
 }
 .blue-flower.small-flower {
   width: 170px;
@@ -479,7 +499,6 @@ body::before {
 }
 .wine {
   width: 120px;
-  mix-blend-mode: multiply;
 }
 .gift-block p {
   margin: 0;
@@ -616,6 +635,11 @@ body::before {
 @media (hover: hover) and (pointer: fine) {
   .button:hover,
   .outline-button:hover { transform: translateY(-2px); filter: brightness(1.02); }
+  .pinterest-link:hover {
+    transform: translateY(-1px);
+    border-color: rgba(183, 21, 27, .58);
+    background: rgba(255,255,255,.66);
+  }
   .quick-nav__item:hover { color: var(--red-deep); background: rgba(183, 21, 27, .06); }
 }
 
