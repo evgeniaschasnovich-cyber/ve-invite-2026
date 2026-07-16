@@ -30,7 +30,7 @@ body {
   margin: 0;
   color: var(--ink);
   background: #d9c8af;
-  font-family: "Cormorant Infant", "Times New Roman", serif;
+  font-family: "Times New Roman", Times, serif;
   font-weight: 400;
   font-size: 20px;
   line-height: 1.35;
@@ -90,21 +90,21 @@ body::before {
 .folk-border {
   height: 72px;
   margin: 0 -30px 36px;
-  background-image: url("assets/folk-border.png");
-  background-repeat: repeat-x;
-  background-position: center top;
-  background-size: auto 72px;
+  background-image: url("assets/ornament-top-transparent.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% auto;
 }
 .folk-border.bottom {
-  margin: 32px -30px -58px;
-  transform: rotate(180deg);
+  margin: 42px -30px 0;
+  background-image: url("assets/ornament-bottom-transparent.png");
 }
 
 .top-heart {
   display: block;
   width: 232px;
   max-width: 84%;
-  margin: 0 auto 12px;
+  margin: 0 auto -24px;
   opacity: .98;
 }
 
@@ -112,75 +112,81 @@ body::before {
 .heading {
   margin: 0;
   color: var(--red);
-  font-family: "Ponomar", "Cormorant Garamond", serif;
+  font-family: "Vezitsa", "Times New Roman", serif;
   font-weight: 400;
   letter-spacing: .02em;
 }
 .names {
-  font-family: "Vezitsa", "Ponomar", "Cormorant Garamond", serif;
-  font-size: clamp(66px, 17vw, 86px);
-  line-height: .98;
-  margin-top: 4px;
+  width: min(100%, 340px);
+  aspect-ratio: 500 / 360;
+  overflow: hidden;
+  line-height: 0;
+  margin: 0 auto;
 }
-.names em {
+.names img {
   display: block;
-  margin: -4px 0 -2px;
-  color: var(--sand);
-  font-family: "Cormorant Garamond", serif;
-  font-size: .58em;
-  font-style: normal;
-  font-weight: 700;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  transform: translateY(-10.8%);
 }
-.names span { display: block; }
 
 .heading {
-  font-family: "Vezitsa", "Ponomar", "Cormorant Garamond", serif;
+  font-family: "Vezitsa", "Times New Roman", serif;
   font-size: clamp(42px, 12vw, 57px);
   line-height: 1.08;
 }
 .deco-title::before,
 .deco-title::after {
-  content: "✦";
-  color: var(--sand);
-  font-family: serif;
-  font-size: .32em;
-  vertical-align: middle;
-  margin: 0 16px;
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background: url("assets/title-star-transparent.png") center / 220% auto no-repeat;
+  position: absolute;
+  top: 50%;
+  margin: 0;
+  transform: translateY(-50%);
 }
-.final-title { font-size: clamp(44px, 12vw, 60px); }
+.deco-title {
+  position: relative;
+  width: fit-content;
+  max-width: calc(100% - 52px);
+  margin-left: auto;
+  margin-right: auto;
+  white-space: nowrap;
+}
+.deco-title::before { left: -26px; }
+.deco-title::after { right: -26px; }
+.final-title {
+  line-height: 0;
+}
+.final-title img {
+  display: block;
+  width: min(100%, 360px);
+  height: auto;
+  margin: 0 auto;
+}
 
 .divider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
+  max-width: 340px;
+  height: 36px;
   margin: 30px auto 22px;
-  color: var(--red);
+  background: url("assets/divider-transparent.png") center / 100% auto no-repeat;
 }
 .divider::before,
-.divider::after {
-  content: "";
-  width: 94px;
-  border-top: 2px dotted rgba(183, 21, 27, .44);
-}
-.divider span {
-  width: 16px;
-  height: 16px;
-  margin: 0 12px;
-  border: 2px solid var(--red);
-  transform: rotate(45deg);
-  position: relative;
-}
+.divider::after,
+.divider span,
 .divider span::after {
-  content: "";
-  position: absolute;
-  inset: 4px;
-  background: var(--red);
+  display: none;
 }
+.hero .names + .divider { margin-top: 8px; }
 
 .date {
   margin: 0 0 16px;
   color: var(--blue);
-  font-family: "Cormorant Garamond", serif;
+  font-family: "Times New Roman", Times, serif;
   font-weight: 400;
   font-size: 39px;
   line-height: 1;
@@ -206,7 +212,7 @@ body::before {
   justify-content: space-between;
   align-items: center;
   color: var(--red);
-  font-family: "Cormorant Garamond", serif;
+  font-family: "Times New Roman", Times, serif;
   font-weight: 400;
   font-size: 29px;
   margin-bottom: 22px;
@@ -220,7 +226,7 @@ body::before {
 }
 .calendar-weekdays {
   color: var(--ink);
-  font-family: "Cormorant Infant", "Times New Roman", serif;
+  font-family: "Times New Roman", Times, serif;
   font-weight: 400;
   font-size: 16px;
   margin-bottom: 18px;
@@ -230,7 +236,7 @@ body::before {
   place-items: center;
   min-height: 27px;
   font-size: 18px;
-  font-family: "Cormorant Garamond", "Times New Roman", serif;
+  font-family: "Times New Roman", Times, serif;
   font-weight: 400;
   position: relative;
   z-index: 1;
@@ -265,7 +271,7 @@ body::before {
   appearance: none;
   border: 0;
   cursor: pointer;
-  font-family: "Cormorant Infant", serif;
+  font-family: "Times New Roman", Times, serif;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
@@ -275,13 +281,20 @@ body::before {
   touch-action: manipulation;
 }
 .button {
-  min-height: 66px;
-  padding: 14px 36px;
-  border-radius: 18px;
+  width: min(100%, 356px);
+  height: 90px;
+  min-height: 90px;
+  padding: 12px 36px;
+  overflow: hidden;
+  border-radius: 28px;
   color: #fff;
   font-size: 27px;
   line-height: 1.12;
-  background: linear-gradient(180deg, #c61a1f, var(--red-deep));
+  background-color: transparent;
+  background-image: url("assets/button-transparent.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 108% auto;
   box-shadow: 0 12px 22px rgba(159, 17, 24, .18);
 }
 .button:active,
@@ -293,7 +306,16 @@ body::before {
   outline: 3px solid rgba(96, 122, 140, .72);
   outline-offset: 3px;
 }
-.button svg { width: 30px; height: 30px; fill: currentColor; }
+.button svg {
+  width: 28px;
+  height: 28px;
+  flex: 0 0 auto;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
 .button.small { min-height: 52px; font-size: 23px; padding: 12px 26px; border-radius: 14px; }
 
 .timing-section { padding-bottom: 70px; }
@@ -345,18 +367,25 @@ body::before {
   max-width: none;
   height: 114%;
   object-fit: cover;
+  object-position: center;
+  transform: translateY(-4px);
+}
+.ceremony-icon { background-color: #788fae; }
+.ceremony-icon img {
+  width: 108%;
+  height: 108%;
 }
 .event-time {
   display: block;
   margin-bottom: 2px;
-  font-family: "Cormorant Garamond", serif;
+  font-family: "Times New Roman", Times, serif;
   font-weight: 400;
   font-size: 35px;
   line-height: 1;
 }
 .timeline-item p {
   margin: 0;
-  font-family: "Cormorant Infant", "Times New Roman", serif;
+  font-family: "Times New Roman", Times, serif;
   font-size: 25px;
   font-weight: 400;
   line-height: 1.24;
@@ -365,48 +394,35 @@ body::before {
 .blue-text { color: var(--blue); }
 
 .wheat-divider {
-  margin: 18px 0 20px;
-  color: var(--sand);
-  font-size: 28px;
+  width: 100%;
+  max-width: 340px;
+  height: 36px;
+  margin: 18px auto 20px;
+  background: url("assets/divider-transparent.png") center / 100% auto no-repeat;
 }
 .wheat-divider::before,
-.wheat-divider::after {
-  content: "⌁⌁⌁";
-  font-size: 24px;
-  letter-spacing: .1em;
-  opacity: .75;
-  margin: 0 16px;
+.wheat-divider::after,
+.wheat-divider span {
+  display: none;
 }
 .muted {
   margin: 12px auto 22px;
   font-size: 22px;
 }
-.palette {
-  display: flex;
-  justify-content: center;
-  gap: 14px;
-  margin: 8px auto 18px;
-}
-.palette span {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: var(--color);
-  border: 1px solid rgba(92,76,55,.14);
-}
-.clothes { width: 340px; margin-top: 8px; margin-bottom: 22px; }
+.clothes { width: 300px; margin-top: 8px; margin-bottom: 22px; }
 .outline-button {
   min-height: 54px;
   padding: 11px 22px;
-  border: 1.5px solid rgba(168, 104, 58, .76);
+  border: 1.5px solid var(--red);
   border-radius: 12px;
-  color: #a14b2a;
+  color: var(--red);
   font-size: 22px;
   background: rgba(255,255,255,.22);
 }
 .note {
   max-width: 350px;
   margin: 26px auto 0;
+  color: var(--blue);
   font-size: 22px;
 }
 
@@ -422,9 +438,10 @@ body::before {
   height: auto;
   margin: 28px auto 0;
 }
+.blue-flower.wishes-flower { width: 133px; }
 .blue-note {
   color: var(--blue);
-  font-family: "Cormorant Infant", "Times New Roman", serif;
+  font-family: "Times New Roman", Times, serif;
   font-size: 26px;
   font-weight: 400;
   line-height: 1.32;
@@ -448,15 +465,7 @@ body::before {
   line-height: 1.37;
 }
 .rsvp-open {
-  width: min(100%, 356px);
-  min-height: 84px;
   margin: 12px auto 30px;
-  overflow: hidden;
-  border-radius: 28px;
-  background-color: var(--red-deep);
-  background-image: url("assets/rsvp-button-texture.webp");
-  background-position: center;
-  background-size: cover;
 }
 
 .rsvp-card {
@@ -476,7 +485,7 @@ body::before {
 .rsvp-card h3 {
   margin: 0 34px 16px 0;
   color: var(--red);
-  font-family: "Cormorant Garamond", serif;
+  font-family: "Times New Roman", Times, serif;
   font-size: 27px;
 }
 .rsvp-close {
@@ -517,24 +526,29 @@ body::before {
   text-underline-offset: 3px;
 }
 .count-title {
-  margin: 6px 0 4px;
+  margin: 34px 0 10px;
   color: var(--blue);
-  font-family: "Cormorant Infant", "Times New Roman", serif;
+  font-family: "Times New Roman", Times, serif;
   font-size: 27px;
   font-weight: 400;
 }
 .count-ornament {
-  color: var(--sand);
-  font-size: 21px;
-  letter-spacing: .06em;
-  margin-bottom: 16px;
+  width: 100%;
+  max-width: 340px;
+  height: 42px;
+  margin-left: auto;
+  margin-right: auto;
+  color: transparent;
+  font-size: 0;
+  background: url("assets/countdown-ornament-transparent.png") center / 100% auto no-repeat;
+  margin-bottom: 26px;
 }
 .countdown {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 9px;
   max-width: 378px;
-  margin: 0 auto 28px;
+  margin: 0 auto 50px;
 }
 .countdown div {
   min-height: 86px;
@@ -546,7 +560,7 @@ body::before {
 .countdown strong {
   display: block;
   color: var(--red);
-  font-family: "Cormorant Garamond", serif;
+  font-family: "Times New Roman", Times, serif;
   font-size: clamp(28px, 8.5vw, 38px);
   line-height: 1;
   font-weight: 500;
@@ -554,7 +568,7 @@ body::before {
 .countdown span {
   display: block;
   margin-top: 8px;
-  font-family: "Cormorant Infant", "Times New Roman", serif;
+  font-family: "Times New Roman", Times, serif;
   font-size: 17px;
   font-weight: 400;
 }
