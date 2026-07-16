@@ -1,3 +1,11 @@
+@font-face {
+  font-family: "Vezitsa";
+  src: url("assets/fonts/vezitsa-cyrillic.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
 :root {
   --paper: #f4eee5;
   --paper-dark: #eadfcd;
@@ -17,14 +25,13 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 24px;
-  scroll-padding-bottom: 104px;
 }
 body {
   margin: 0;
-  padding-bottom: calc(84px + env(safe-area-inset-bottom));
   color: var(--ink);
   background: #d9c8af;
   font-family: "Cormorant Infant", "Times New Roman", serif;
+  font-weight: 400;
   font-size: 20px;
   line-height: 1.35;
 }
@@ -46,49 +53,6 @@ body {
 }
 .skip-link:focus { transform: translate(-50%, 0); }
 
-.quick-nav {
-  position: fixed;
-  left: 50%;
-  bottom: max(10px, env(safe-area-inset-bottom));
-  z-index: 15;
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  width: min(calc(100% - 20px), 410px);
-  padding: 6px;
-  border: 1px solid rgba(159, 17, 24, .16);
-  border-radius: 18px;
-  background: rgba(248, 244, 235, .94);
-  box-shadow: 0 10px 35px rgba(65, 48, 34, .25);
-  backdrop-filter: blur(12px);
-  transform: translateX(-50%);
-}
-.quick-nav__item {
-  appearance: none;
-  min-width: 0;
-  min-height: 56px;
-  padding: 5px 2px;
-  border: 0;
-  border-radius: 12px;
-  color: var(--ink);
-  background: transparent;
-  font: 600 13px/1.05 "Cormorant Infant", serif;
-  text-align: center;
-  text-decoration: none;
-  cursor: pointer;
-  touch-action: manipulation;
-  transition: color .2s ease, background .2s ease, transform .15s ease;
-}
-.quick-nav__icon {
-  display: block;
-  margin-bottom: 3px;
-  color: var(--sand);
-  font: 24px/1 "Cormorant Garamond", serif;
-}
-.quick-nav__item.is-active {
-  color: var(--red-deep);
-  background: rgba(183, 21, 27, .09);
-}
-.quick-nav__item.is-active .quick-nav__icon { color: var(--red); }
 body::before {
   content: "";
   position: fixed;
@@ -153,6 +117,7 @@ body::before {
   letter-spacing: .02em;
 }
 .names {
+  font-family: "Vezitsa", "Ponomar", "Cormorant Garamond", serif;
   font-size: clamp(66px, 17vw, 86px);
   line-height: .98;
   margin-top: 4px;
@@ -169,6 +134,7 @@ body::before {
 .names span { display: block; }
 
 .heading {
+  font-family: "Vezitsa", "Ponomar", "Cormorant Garamond", serif;
   font-size: clamp(42px, 12vw, 57px);
   line-height: 1.08;
 }
@@ -215,6 +181,7 @@ body::before {
   margin: 0 0 16px;
   color: var(--blue);
   font-family: "Cormorant Garamond", serif;
+  font-weight: 400;
   font-size: 39px;
   line-height: 1;
 }
@@ -240,6 +207,7 @@ body::before {
   align-items: center;
   color: var(--red);
   font-family: "Cormorant Garamond", serif;
+  font-weight: 400;
   font-size: 29px;
   margin-bottom: 22px;
 }
@@ -252,6 +220,8 @@ body::before {
 }
 .calendar-weekdays {
   color: var(--ink);
+  font-family: "Cormorant Infant", "Times New Roman", serif;
+  font-weight: 400;
   font-size: 16px;
   margin-bottom: 18px;
 }
@@ -260,6 +230,8 @@ body::before {
   place-items: center;
   min-height: 27px;
   font-size: 18px;
+  font-family: "Cormorant Garamond", "Times New Roman", serif;
+  font-weight: 400;
   position: relative;
   z-index: 1;
 }
@@ -313,12 +285,9 @@ body::before {
   box-shadow: 0 12px 22px rgba(159, 17, 24, .18);
 }
 .button:active,
-.outline-button:active,
-.quick-nav__item:active { transform: translateY(1px) scale(.98); }
+.outline-button:active { transform: translateY(1px) scale(.98); }
 .button:focus-visible,
 .outline-button:focus-visible,
-.pinterest-link:focus-visible,
-.quick-nav__item:focus-visible,
 .rsvp-close:focus-visible,
 .skip-link:focus-visible {
   outline: 3px solid rgba(96, 122, 140, .72);
@@ -339,7 +308,7 @@ body::before {
   position: absolute;
   top: 30px;
   bottom: 38px;
-  left: 10px;
+  left: 12px;
   border-left: 1px solid rgba(82, 107, 125, .35);
 }
 .timeline-item {
@@ -356,6 +325,7 @@ body::before {
   border-radius: 50%;
   position: relative;
   z-index: 2;
+  justify-self: center;
 }
 .timeline-dot.red { background: var(--red); }
 .timeline-dot.blue { background: var(--blue); }
@@ -366,20 +336,31 @@ body::before {
   border-radius: 50%;
   display: grid;
   place-items: center;
-  color: #fff;
+  overflow: hidden;
   box-shadow: 0 7px 15px rgba(71, 56, 40, .15);
 }
-.icon-circle span { font-size: 29px; filter: grayscale(1) brightness(2.3); }
-.icon-circle.sand { background: #c6af91; }
-.icon-circle.blue-bg { background: var(--blue); }
+.icon-circle img {
+  display: block;
+  width: 114%;
+  max-width: none;
+  height: 114%;
+  object-fit: cover;
+}
 .event-time {
   display: block;
   margin-bottom: 2px;
   font-family: "Cormorant Garamond", serif;
+  font-weight: 400;
   font-size: 35px;
   line-height: 1;
 }
-.timeline-item p { margin: 0; font-size: 25px; line-height: 1.24; }
+.timeline-item p {
+  margin: 0;
+  font-family: "Cormorant Infant", "Times New Roman", serif;
+  font-size: 25px;
+  font-weight: 400;
+  line-height: 1.24;
+}
 .red-text { color: var(--red); }
 .blue-text { color: var(--blue); }
 
@@ -423,46 +404,6 @@ body::before {
   font-size: 22px;
   background: rgba(255,255,255,.22);
 }
-.inspiration-panel {
-  max-width: 350px;
-  margin: 16px auto 0;
-  padding: 18px 20px;
-  border: 1px solid rgba(168, 104, 58, .28);
-  border-radius: 14px;
-  background: rgba(255,255,255,.35);
-  text-align: left;
-}
-.inspiration-panel h3 {
-  margin: 0 0 8px;
-  color: var(--red);
-  font-family: "Cormorant Garamond", serif;
-  font-size: 24px;
-}
-.inspiration-panel ul {
-  margin: 0;
-  padding-left: 20px;
-  font-size: 19px;
-}
-.inspiration-panel li + li { margin-top: 6px; }
-.pinterest-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  width: 100%;
-  min-height: 48px;
-  margin-top: 18px;
-  padding: 10px 14px;
-  border: 1px solid rgba(183, 21, 27, .34);
-  border-radius: 12px;
-  color: var(--red-deep);
-  background: rgba(255,255,255,.42);
-  font-size: 19px;
-  line-height: 1.15;
-  text-align: center;
-  text-decoration: none;
-  transition: transform .2s ease, border-color .2s ease, background .2s ease;
-}
 .note {
   max-width: 350px;
   margin: 26px auto 0;
@@ -470,7 +411,6 @@ body::before {
 }
 
 .wishes { padding-bottom: 0; }
-.wishes .folk-border { margin-bottom: 58px; }
 .blue-flower {
   display: block;
   width: 190px;
@@ -484,7 +424,9 @@ body::before {
 }
 .blue-note {
   color: var(--blue);
+  font-family: "Cormorant Infant", "Times New Roman", serif;
   font-size: 26px;
+  font-weight: 400;
   line-height: 1.32;
   margin: 0 auto 34px;
 }
@@ -505,19 +447,17 @@ body::before {
   font-size: 23px;
   line-height: 1.37;
 }
-.heart-mini {
-  color: var(--red);
-  font-size: 34px;
-  margin: 14px 0 18px;
-}
-.heart-mini.large { font-size: 44px; margin: 4px 0 0; }
 .rsvp-open {
   width: min(100%, 356px);
   min-height: 84px;
-  gap: 32px;
   margin: 12px auto 30px;
+  overflow: hidden;
+  border-radius: 28px;
+  background-color: var(--red-deep);
+  background-image: url("assets/rsvp-button-texture.webp");
+  background-position: center;
+  background-size: cover;
 }
-.rsvp-open span { font-size: 38px; }
 
 .rsvp-card {
   display: none;
@@ -579,7 +519,9 @@ body::before {
 .count-title {
   margin: 6px 0 4px;
   color: var(--blue);
+  font-family: "Cormorant Infant", "Times New Roman", serif;
   font-size: 27px;
+  font-weight: 400;
 }
 .count-ornament {
   color: var(--sand);
@@ -612,7 +554,9 @@ body::before {
 .countdown span {
   display: block;
   margin-top: 8px;
+  font-family: "Cormorant Infant", "Times New Roman", serif;
   font-size: 17px;
+  font-weight: 400;
 }
 
 @media (max-width: 359px) {
@@ -623,9 +567,6 @@ body::before {
   .gift-block { grid-template-columns: 102px 1fr; gap: 12px; }
   .wine { width: 104px; }
   .countdown { gap: 6px; }
-  .quick-nav { width: calc(100% - 12px); }
-  .quick-nav__item { font-size: 11px; }
-  .quick-nav__icon { font-size: 21px; }
 }
 
 @media (min-width: 760px) {
@@ -635,12 +576,6 @@ body::before {
 @media (hover: hover) and (pointer: fine) {
   .button:hover,
   .outline-button:hover { transform: translateY(-2px); filter: brightness(1.02); }
-  .pinterest-link:hover {
-    transform: translateY(-1px);
-    border-color: rgba(183, 21, 27, .58);
-    background: rgba(255,255,255,.66);
-  }
-  .quick-nav__item:hover { color: var(--red-deep); background: rgba(183, 21, 27, .06); }
 }
 
 @media (prefers-reduced-motion: reduce) {
