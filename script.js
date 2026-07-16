@@ -49,7 +49,7 @@ updateCountdown();
 setInterval(updateCountdown, 1000);
 
 const rsvpCard = document.querySelector('.rsvp-card');
-const rsvpTriggers = document.querySelectorAll('.rsvp-open, .rsvp-nav');
+const rsvpTriggers = document.querySelectorAll('.rsvp-open');
 const rsvpClose = document.querySelector('.rsvp-close');
 let lastRsvpTrigger = null;
 
@@ -78,47 +78,3 @@ rsvpClose.addEventListener('click', closeRsvp);
 document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape' && !rsvpCard.hidden) closeRsvp();
 });
-
-const inspirationToggle = document.querySelector('.inspiration-toggle');
-const inspirationPanel = document.getElementById('dress-inspiration');
-const inspirationLabel = document.querySelector('.inspiration-label');
-
-inspirationToggle.addEventListener('click', () => {
-  const willOpen = inspirationPanel.hidden;
-  inspirationPanel.hidden = !willOpen;
-  inspirationToggle.setAttribute('aria-expanded', String(willOpen));
-  inspirationLabel.textContent = willOpen ? 'Скрыть идеи образов' : 'Показать идеи образов';
-  if (willOpen) inspirationPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-});
-
-const navItems = [...document.querySelectorAll('.quick-nav__item[data-target]')];
-const navTargets = navItems
-  .map((item) => ({ item, target: document.getElementById(item.dataset.target) }))
-  .filter(({ target }) => target);
-let navUpdateQueued = false;
-
-function updateActiveNavigation() {
-  navUpdateQueued = false;
-  const marker = window.scrollY + window.innerHeight * 0.38;
-  let current = navTargets[0];
-
-  navTargets.forEach((entry) => {
-    const targetTop = entry.target.getBoundingClientRect().top + window.scrollY;
-    if (targetTop <= marker) current = entry;
-  });
-
-  navItems.forEach((item) => {
-    const isCurrent = item === current.item;
-    item.classList.toggle('is-active', isCurrent);
-    if (isCurrent) item.setAttribute('aria-current', 'page');
-    else item.removeAttribute('aria-current');
-  });
-}
-
-window.addEventListener('scroll', () => {
-  if (navUpdateQueued) return;
-  navUpdateQueued = true;
-  requestAnimationFrame(updateActiveNavigation);
-}, { passive: true });
-window.addEventListener('resize', updateActiveNavigation);
-updateActiveNavigation();
